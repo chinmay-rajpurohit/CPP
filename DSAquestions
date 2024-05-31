@@ -1,0 +1,35 @@
+/*  Reverse Integer : https://leetcode.com/problems/reverse-integer/description/ */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+
+    long long reverse(long long x) 
+    {
+        long long l=0;
+        long long t=x;
+        while(t)
+        {
+            l++;
+            t=t/10;
+        }
+      
+        l--;
+        t=x;
+        long long ans=0;
+        while(t)
+        {
+            long long i=t%10;
+            ans=ans+ (i*pow(10,l));
+            if(ans>pow(2,31)-1 or ans<-pow(2,31))
+            {
+                return 0;
+            }
+            l--;
+            t=t/10;
+        }
+        return ans;
+    }
+};
